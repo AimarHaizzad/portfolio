@@ -674,8 +674,11 @@ section {
 }
 
 .education-content {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
 }
 
 .education-card {
@@ -961,6 +964,10 @@ section {
     }
 
     .skills-content {
+        grid-template-columns: 1fr;
+    }
+
+    .education-content {
         grid-template-columns: 1fr;
     }
 
