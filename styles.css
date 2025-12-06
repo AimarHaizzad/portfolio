@@ -6,19 +6,19 @@
 }
 
 :root {
-    --primary-color: #2563eb;
-    --primary-dark: #1e40af;
+    --primary-color: #3b82f6;
+    --primary-dark: #2563eb;
     --secondary-color: #10b981;
-    --text-primary: #1f2937;
-    --text-secondary: #6b7280;
-    --bg-primary: #ffffff;
-    --bg-secondary: #f9fafb;
+    --text-primary: #ffffff;
+    --text-secondary: #d1d5db;
+    --bg-primary: #000000;
+    --bg-secondary: #0a0a0a;
     --bg-dark: #111827;
-    --border-color: #e5e7eb;
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --border-color: #1f1f1f;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
 }
 
 html {
@@ -44,11 +44,12 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
     z-index: 1000;
     transition: all 0.3s ease;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .navbar.scrolled {
@@ -354,6 +355,7 @@ section {
     background: var(--bg-secondary);
     border-radius: 8px;
     transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
 .highlight-item:hover {
@@ -373,6 +375,7 @@ section {
 /* Skills Section */
 .skills {
     background: var(--bg-secondary);
+    color: var(--text-primary);
 }
 
 .skills-content {
@@ -382,11 +385,12 @@ section {
 }
 
 .skill-category {
-    background: white;
+    background: var(--bg-secondary);
     padding: 2rem;
     border-radius: 12px;
     box-shadow: var(--shadow-md);
     transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
 .skill-category:hover {
@@ -486,6 +490,7 @@ section {
 /* Projects Section */
 .projects {
     background: var(--bg-primary);
+    color: var(--text-primary);
 }
 
 .projects-grid {
@@ -495,11 +500,12 @@ section {
 }
 
 .project-card {
-    background: white;
+    background: var(--bg-secondary);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: var(--shadow-md);
     transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
 .project-card:hover {
@@ -598,10 +604,11 @@ section {
 
 .tech-tag {
     padding: 0.25rem 0.75rem;
-    background: var(--bg-secondary);
+    background: var(--bg-primary);
     border-radius: 15px;
     font-size: 0.85rem;
     color: var(--text-primary);
+    border: 1px solid var(--border-color);
 }
 
 /* Internships Section */
@@ -615,13 +622,14 @@ section {
 }
 
 .internship-card {
-    background: white;
+    background: var(--bg-secondary);
     padding: 2rem;
     border-radius: 12px;
     box-shadow: var(--shadow-md);
     display: flex;
     gap: 2rem;
     transition: transform 0.3s ease;
+    border: 1px solid var(--border-color);
 }
 
 .internship-card:hover {
@@ -671,6 +679,7 @@ section {
 /* Education Section */
 .education {
     background: var(--bg-primary);
+    color: var(--text-primary);
 }
 
 .education-content {
@@ -732,6 +741,7 @@ section {
 /* Contact Section */
 .contact {
     background: var(--bg-secondary);
+    color: var(--text-primary);
 }
 
 .contact-content {
@@ -786,10 +796,11 @@ section {
 }
 
 .contact-form {
-    background: white;
+    background: var(--bg-secondary);
     padding: 2rem;
     border-radius: 12px;
     box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
 }
 
 .form-group {
