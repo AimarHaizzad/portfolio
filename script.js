@@ -145,7 +145,7 @@ downloadResume.addEventListener('click', (e) => {
     
     // Download the actual PDF resume
     const a = document.createElement('a');
-    a.href = 'images/AIMAR HAIZZAD BIN NASREY.pdf';
+    a.href = 'images/AIMAR%20HAIZZAD%20BIN%20NASREY.pdf';
     a.download = 'AIMAR_HAIZZAD_BIN_NASREY_Resume.pdf';
     document.body.appendChild(a);
     a.click();
