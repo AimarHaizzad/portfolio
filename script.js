@@ -143,54 +143,13 @@ const downloadResume = document.getElementById('downloadResume');
 downloadResume.addEventListener('click', (e) => {
     e.preventDefault();
     
-    // Create a simple resume PDF content (you can replace this with an actual PDF file)
-    // For now, we'll create a downloadable text file or you can link to an actual PDF
-    
-    // Option 1: Link to an actual PDF file (if you have one)
-    // window.open('resume.pdf', '_blank');
-    
-    // Option 2: Create a downloadable text file
-    const resumeContent = `
-AIMAR HAIZZAD
-Software Engineering Student
-
-CONTACT INFORMATION
-Email: haizzadaimar@gmail.com
-Phone: 011-51120112
-Location: Malaysia
-
-EDUCATION
-Bachelor of Computer Science (Software Engineering) with Honours
-Universiti Malaysia Pahang Al-Sultan Abdullah (UMPSA)
-Current
-
-TECHNICAL SKILLS
-Frontend: HTML5, CSS, JavaScript, Bootstrap
-Backend: PHP, Laravel, RESTful APIs, MySQL, Firebase
-Mobile Development: Flutter
-Tools & Others: Git/GitHub, UI/UX Design (Figma), System Testing, Debugging
-
-PROJECTS
-SmashZone (Final Year Project)
-- Full-stack system with web application and mobile app
-- Technologies: Laravel MVC, RESTful APIs, MySQL, Flutter
-- Features: Frontend UI/UX, system integration, debugging
-
-ABOUT
-Strong problem-solving, logical thinking, and coding skills. 
-Passionate about developing web and mobile applications and learning new technologies. 
-Experienced in working on projects both individually and in teams.
-    `;
-    
-    const blob = new Blob([resumeContent], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
+    // Download the actual PDF resume
     const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Aimar_Haizzad_Resume.txt';
+    a.href = 'images/AIMAR HAIZZAD BIN NASREY.pdf';
+    a.download = 'AIMAR_HAIZZAD_BIN_NASREY_Resume.pdf';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    URL.revokeObjectURL(url);
     
     // Show feedback
     downloadResume.innerHTML = '<i class="fas fa-check"></i> Resume Downloaded!';
