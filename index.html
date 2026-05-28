@@ -3,26 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aimar Haizzad - Software Engineering Portfolio</title>
+    <title>Aimar Haizzad — Software Engineer</title>
+    <meta name="description" content="Portfolio of Aimar Haizzad — Software Engineering student building web & mobile applications.">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+    <div class="noise" aria-hidden="true"></div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <div class="container">
-            <div class="nav-brand">AH</div>
+        <div class="container nav-inner">
+            <a href="#home" class="nav-brand">
+                <span class="brand-dot"></span>
+                <span>aimar<span class="brand-accent">.</span>dev</span>
+            </a>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#education" class="nav-link">Education</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#contact" class="nav-link nav-link-cta">Contact</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
+            <div class="hamburger" id="hamburger" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
             </div>
@@ -31,221 +39,185 @@
 
     <!-- Home Section -->
     <section id="home" class="home">
+        <div class="hero-bg">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+            <div class="grid-lines"></div>
+        </div>
         <div class="container">
             <div class="home-content">
                 <div class="home-text">
-                    <h1 class="home-title">
-                        <span class="greeting">Hello, I'm</span>
-                        <span class="name">Aimar Haizzad</span>
+                    <div class="status-pill reveal">
+                        <span class="status-dot"></span>
+                        Available for opportunities
+                    </div>
+                    <p class="home-eyebrow reveal">Hello, I'm</p>
+                    <h1 class="home-title reveal">
+                        Aimar <span class="gradient-text">Haizzad</span>
                     </h1>
-                    <p class="home-subtitle">Software Engineering Student</p>
-                    <p class="home-description">
-                        Passionate about developing web and mobile applications, 
-                        and learning new technologies. Currently pursuing Bachelor of 
-                        Computer Science (Software Engineering) with Honours.
+                    <p class="home-subtitle reveal">
+                        <span id="typedRole">Software Engineering Student</span>
                     </p>
-                    <div class="home-buttons">
-                        <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                        <a href="#projects" class="btn btn-secondary">View Projects</a>
-                        <a href="#" class="btn btn-outline" id="downloadResume">
-                            <i class="fas fa-download"></i> Download Resume
+                    <p class="home-description reveal">
+                        Building full-stack web & mobile experiences with Laravel, Flutter, and modern APIs.
+                        Currently pursuing BCS (Software Engineering) with Honours at UMPSA.
+                    </p>
+                    <div class="home-stats reveal">
+                        <div class="stat">
+                            <span class="stat-num" data-count="3">0</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <span class="stat-num" data-count="10">0</span>+
+                            <span class="stat-label">Technologies</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <span class="stat-num">FYP</span>
+                            <span class="stat-label">In Progress</span>
+                        </div>
+                    </div>
+                    <div class="home-buttons reveal">
+                        <a href="#projects" class="btn btn-primary">
+                            <span>View Work</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-glass">Get In Touch</a>
+                        <a href="#" class="btn btn-ghost" id="downloadResume">
+                            <i class="fas fa-download"></i>
+                            <span>Resume</span>
                         </a>
                     </div>
-                    <div class="social-links">
-                        <a href="mailto:haizzadaimar@gmail.com" aria-label="Email">
+                    <div class="social-links reveal">
+                        <a href="mailto:haizzadaimar@gmail.com" aria-label="Email" class="social-btn">
                             <i class="fas fa-envelope"></i>
                         </a>
-                        <a href="tel:01151120112" aria-label="Phone">
+                        <a href="tel:01151120112" aria-label="Phone" class="social-btn">
                             <i class="fas fa-phone"></i>
                         </a>
-                        <a href="https://github.com" target="_blank" aria-label="GitHub">
+                        <a href="https://github.com/AimarHaizzad" target="_blank" rel="noopener" aria-label="GitHub" class="social-btn">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/aimarhaizzad" target="_blank" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/in/aimarhaizzad" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-btn">
                             <i class="fab fa-linkedin"></i>
                         </a>
                     </div>
                 </div>
-                <div class="home-image">
-                    <img src="images/GAMBAR2.jpg" alt="Aimar Haizzad" class="profile-photo">
+                <div class="home-visual reveal">
+                    <div class="profile-frame">
+                        <div class="profile-ring"></div>
+                        <img src="images/GAMBAR2.jpg" alt="Aimar Haizzad" class="profile-photo">
+                        <div class="profile-badge">
+                            <i class="fas fa-code"></i>
+                            Full-Stack
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <a href="#about"><i class="fas fa-chevron-down"></i></a>
-        </div>
+        <a href="#about" class="scroll-indicator" aria-label="Scroll down">
+            <span class="scroll-line"></span>
+        </a>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" class="about section">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
+            <header class="section-header reveal">
+                <span class="section-tag">01 — About</span>
+                <h2 class="section-title">Crafting digital<br><span class="gradient-text">experiences</span></h2>
+            </header>
+            <div class="about-bento">
+                <div class="bento-card bento-main reveal">
                     <p>
-                        I am a dedicated Software Engineering student pursuing a Bachelor of 
-                        Computer Science (Software Engineering) with Honours at Universiti 
-                        Malaysia Pahang Al-Sultan Abdullah (UMPSA).
+                        Dedicated Software Engineering student at Universiti Malaysia Pahang Al-Sultan Abdullah (UMPSA),
+                        with strong problem-solving skills and a passion for web and mobile development.
                     </p>
                     <p>
-                        With strong problem-solving, logical thinking, and coding skills, I am 
-                        passionate about developing web and mobile applications and continuously 
-                        learning new technologies. I have experience working on projects both 
-                        individually and in teams, which has helped me develop excellent 
-                        collaboration and communication skills.
+                        Experienced in individual and team projects — from Laravel backends to Flutter mobile apps —
+                        with a focus on clean architecture, intuitive UI, and reliable delivery.
                     </p>
-                    <div class="about-highlights">
-                        <div class="highlight-item">
-                            <i class="fas fa-code"></i>
-                            <span>Full-Stack Development</span>
-                        </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-mobile-alt"></i>
-                            <span>Mobile App Development</span>
-                        </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-users"></i>
-                            <span>Team Collaboration</span>
-                        </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-lightbulb"></i>
-                            <span>Problem Solving</span>
-                        </div>
-                    </div>
+                </div>
+                <div class="bento-card bento-highlight reveal">
+                    <div class="bento-icon"><i class="fas fa-code"></i></div>
+                    <h3>Full-Stack</h3>
+                    <p>Laravel, REST APIs, MySQL</p>
+                </div>
+                <div class="bento-card bento-highlight reveal">
+                    <div class="bento-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Mobile</h3>
+                    <p>Flutter & Firebase</p>
+                </div>
+                <div class="bento-card bento-highlight reveal">
+                    <div class="bento-icon"><i class="fas fa-users"></i></div>
+                    <h3>Team Player</h3>
+                    <p>Agile collaboration</p>
+                </div>
+                <div class="bento-card bento-highlight reveal">
+                    <div class="bento-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>Problem Solver</h3>
+                    <p>Debug & optimize</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <section id="skills" class="skills section">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-content">
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-paint-brush"></i> Frontend
-                    </h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">HTML5</span>
-                                <span class="skill-percent">90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">CSS</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">JavaScript</span>
-                                <span class="skill-percent">80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Bootstrap</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
+            <header class="section-header reveal">
+                <span class="section-tag">02 — Skills</span>
+                <h2 class="section-title">Tech <span class="gradient-text">stack</span></h2>
+            </header>
+            <div class="skills-grid">
+                <div class="skill-panel reveal">
+                    <div class="panel-header">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>Frontend</h3>
+                    </div>
+                    <div class="skill-chips">
+                        <span class="chip" data-level="90">HTML5</span>
+                        <span class="chip" data-level="85">CSS3</span>
+                        <span class="chip" data-level="80">JavaScript</span>
+                        <span class="chip" data-level="85">Bootstrap</span>
                     </div>
                 </div>
-
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-server"></i> Backend
-                    </h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">PHP</span>
-                                <span class="skill-percent">80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Laravel</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">RESTful APIs</span>
-                                <span class="skill-percent">80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">MySQL</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Firebase</span>
-                                <span class="skill-percent">75%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 75%"></div>
-                            </div>
-                        </div>
+                <div class="skill-panel reveal">
+                    <div class="panel-header">
+                        <i class="fas fa-server"></i>
+                        <h3>Backend</h3>
+                    </div>
+                    <div class="skill-chips">
+                        <span class="chip" data-level="80">PHP</span>
+                        <span class="chip" data-level="85">Laravel</span>
+                        <span class="chip" data-level="80">RESTful APIs</span>
+                        <span class="chip" data-level="85">MySQL</span>
+                        <span class="chip" data-level="75">Firebase</span>
                     </div>
                 </div>
-
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-mobile-alt"></i> Mobile Development
-                    </h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span class="skill-name">Flutter</span>
-                                <span class="skill-percent">80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
+                <div class="skill-panel reveal">
+                    <div class="panel-header">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile</h3>
+                    </div>
+                    <div class="skill-chips">
+                        <span class="chip" data-level="80">Flutter</span>
+                        <span class="chip featured">Dart</span>
                     </div>
                 </div>
-
-                <div class="skill-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-tools"></i> Tools & Others
-                    </h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag"><i class="fab fa-git-alt"></i> Git/GitHub</span>
-                        <span class="skill-tag"><i class="fab fa-figma"></i> Figma</span>
-                        <span class="skill-tag"><i class="fas fa-palette"></i> UI/UX Design</span>
-                        <span class="skill-tag"><i class="fas fa-vial"></i> System Testing</span>
-                        <span class="skill-tag"><i class="fas fa-bug"></i> Debugging</span>
+                <div class="skill-panel reveal">
+                    <div class="panel-header">
+                        <i class="fas fa-tools"></i>
+                        <h3>Tools & More</h3>
+                    </div>
+                    <div class="skill-chips">
+                        <span class="chip"><i class="fab fa-git-alt"></i> Git</span>
+                        <span class="chip"><i class="fab fa-figma"></i> Figma</span>
+                        <span class="chip">UI/UX</span>
+                        <span class="chip">Testing</span>
+                        <span class="chip">Debugging</span>
                     </div>
                 </div>
             </div>
@@ -253,137 +225,115 @@
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="projects">
+    <section id="projects" class="projects section">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
+            <header class="section-header reveal">
+                <span class="section-tag">03 — Work</span>
+                <h2 class="section-title">Selected <span class="gradient-text">projects</span></h2>
+            </header>
             <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="https://smashzone-ywoa.onrender.com" target="_blank" class="project-link" aria-label="View Project">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="https://github.com/AimarHaizzad/SmashZone" target="_blank" class="project-link" aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                <article class="project-card reveal featured">
+                    <div class="project-number">01</div>
+                    <div class="project-header">
+                        <span class="project-type">Final Year Project</span>
+                        <div class="project-links">
+                            <a href="https://smashzone-ywoa.onrender.com" target="_blank" rel="noopener" aria-label="Live demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a href="https://github.com/AimarHaizzad/SmashZone" target="_blank" rel="noopener" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">SmashZone</h3>
-                        <p class="project-type">Final Year Project</p>
-                        <p class="project-description">
-                            Full-stack system with a web application and mobile app. 
-                            Features include Laravel MVC architecture, RESTful APIs, 
-                            MySQL database design, Flutter mobile app, frontend UI/UX, 
-                            system integration, and comprehensive debugging.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Laravel</span>
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">RESTful API</span>
-                            <span class="tech-tag">UI/UX</span>
+                    <h3 class="project-title">SmashZone</h3>
+                    <p class="project-description">
+                        Full-stack system with web app and mobile client. Laravel MVC, RESTful APIs,
+                        MySQL database, Flutter mobile app, and end-to-end system integration.
+                    </p>
+                    <div class="project-tech">
+                        <span>Laravel</span>
+                        <span>Flutter</span>
+                        <span>MySQL</span>
+                        <span>REST API</span>
+                        <span>UI/UX</span>
+                    </div>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-number">02</div>
+                    <div class="project-header">
+                        <span class="project-type">Learning Platform</span>
+                        <div class="project-links">
+                            <a href="https://github.com/AimarHaizzad/ClassConnect" target="_blank" rel="noopener" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="View Project">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="https://github.com/AimarHaizzad/ClassConnect" target="_blank" class="project-link" aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
+                    <h3 class="project-title">ClassConnect</h3>
+                    <p class="project-description">
+                        Web-based learning platform with student, teacher, and admin roles.
+                        Courses, assignments, grading, and attendance with SQA practices.
+                    </p>
+                    <div class="project-tech">
+                        <span>Laravel</span>
+                        <span>MySQL</span>
+                        <span>JavaScript</span>
+                        <span>Bootstrap</span>
+                    </div>
+                </article>
+
+                <article class="project-card reveal">
+                    <div class="project-number">03</div>
+                    <div class="project-header">
+                        <span class="project-type">Team Project</span>
+                        <div class="project-links">
+                            <a href="https://github.com/IzzatHaikal0/Workshop-Management-System-WMS-Group-7" target="_blank" rel="noopener" aria-label="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
                         </div>
                     </div>
-                    <div class="project-content">
-                        <h3 class="project-title">ClassConnect</h3>
-                        <p class="project-type">High School Learning System</p>
-                        <p class="project-description">
-                            Web-based learning platform built with Laravel and MySQL, supporting student, teacher, and admin roles. Features include user management, courses, assignments, grading, and attendance with a responsive interface. Applied SQA practices for enhanced system reliability.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Laravel</span>
-                            <span class="tech-tag">MySQL</span>
-                            <span class="tech-tag">JavaScript</span>
-                            <span class="tech-tag">Bootstrap</span>
-                            <span class="tech-tag">SQA</span>
-                        </div>
+                    <h3 class="project-title">Workshop Management System</h3>
+                    <p class="project-description">
+                        Flutter + Firebase app with role-based access. Contributed Payment and Report
+                        modules with transaction tracking and data visualization.
+                    </p>
+                    <div class="project-tech">
+                        <span>Flutter</span>
+                        <span>Firebase</span>
+                        <span>RBAC</span>
+                        <span>Payments</span>
                     </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-placeholder">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                        <div class="project-overlay">
-                            <div class="project-links">
-                                <a href="#" class="project-link" aria-label="View Project">
-                                    <i class="fas fa-external-link-alt"></i>
-                                </a>
-                                <a href="https://github.com/IzzatHaikal0/Workshop-Management-System-WMS-Group-7" target="_blank" class="project-link" aria-label="GitHub">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Workshop Management System</h3>
-                        <p class="project-type">Software Engineering Practice</p>
-                        <p class="project-description">
-                            Workshop Management System developed with Flutter and Firebase. Collaborated with a team to implement secure role-based access and user workflows. Contributed to Payment and Report modules with payment processing, transaction tracking, and data visualization.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Firebase</span>
-                            <span class="tech-tag">Role-Based Access</span>
-                            <span class="tech-tag">Payment Processing</span>
-                            <span class="tech-tag">Data Visualization</span>
-                        </div>
-                    </div>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- Education Section -->
-    <section id="education" class="education">
+    <section id="education" class="education section">
         <div class="container">
-            <h2 class="section-title">Education</h2>
-            <div class="education-content">
-                <div class="education-card">
-                    <div class="education-icon">
+            <header class="section-header reveal">
+                <span class="section-tag">04 — Education</span>
+                <h2 class="section-title">Academic <span class="gradient-text">journey</span></h2>
+            </header>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-marker">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <div class="education-details">
-                        <h3 class="education-degree">Bachelor of Computer Science (Software Engineering) with Honours</h3>
-                        <p class="education-institution">Universiti Malaysia Pahang Al-Sultan Abdullah (UMPSA)</p>
-                        <p class="education-period">
-                            <i class="fas fa-calendar"></i> Current
-                        </p>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-badge current">Current</span>
+                        <h3>Bachelor of Computer Science (Software Engineering) with Honours</h3>
+                        <p class="timeline-org">Universiti Malaysia Pahang Al-Sultan Abdullah (UMPSA)</p>
                     </div>
                 </div>
-                <div class="education-card">
-                    <div class="education-icon">
+                <div class="timeline-item reveal">
+                    <div class="timeline-marker">
                         <i class="fas fa-school"></i>
                     </div>
-                    <div class="education-details">
-                        <h3 class="education-degree">Matriculation</h3>
-                        <p class="education-institution">Selangor Matriculation College</p>
-                        <p class="education-period">
-                            <i class="fas fa-calendar"></i> Completed
-                        </p>
+                    <div class="timeline-content glass-card">
+                        <span class="timeline-badge">Completed</span>
+                        <h3>Matriculation</h3>
+                        <p class="timeline-org">Selangor Matriculation College</p>
                     </div>
                 </div>
             </div>
@@ -391,63 +341,68 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact section">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+            <header class="section-header reveal">
+                <span class="section-tag">05 — Contact</span>
+                <h2 class="section-title">Let's <span class="gradient-text">connect</span></h2>
+            </header>
+            <div class="contact-layout">
+                <div class="contact-info reveal">
+                    <p class="contact-intro">
+                        Have a project in mind or want to collaborate? Drop me a message — I'd love to hear from you.
+                    </p>
+                    <a href="mailto:haizzadaimar@gmail.com" class="contact-link glass-card">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <span class="link-label">Email</span>
+                            <span>haizzadaimar@gmail.com</span>
                         </div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <a href="mailto:haizzadaimar@gmail.com">haizzadaimar@gmail.com</a>
+                    </a>
+                    <a href="tel:01151120112" class="contact-link glass-card">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <span class="link-label">Phone</span>
+                            <span>011-51120112</span>
                         </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Phone</h4>
-                            <a href="tel:01151120112">011-51120112</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Location</h4>
-                            <p>Malaysia</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>LinkedIn</h4>
-                            <a href="https://www.linkedin.com/in/aimarhaizzad" target="_blank">www.linkedin.com/in/aimarhaizzad</a>
+                    </a>
+                    <div class="contact-link glass-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span class="link-label">Location</span>
+                            <span>Malaysia</span>
                         </div>
                     </div>
+                    <a href="https://www.linkedin.com/in/aimarhaizzad" target="_blank" rel="noopener" class="contact-link glass-card">
+                        <i class="fab fa-linkedin"></i>
+                        <div>
+                            <span class="link-label">LinkedIn</span>
+                            <span>aimarhaizzad</span>
+                        </div>
+                    </a>
                 </div>
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <form class="contact-form glass-card reveal" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required autocomplete="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required autocomplete="email">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-paper-plane"></i> Send Message
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
                     </button>
                 </form>
             </div>
@@ -456,21 +411,12 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Aimar Haizzad. All rights reserved.</p>
+        <div class="container footer-inner">
+            <p>&copy; 2026 Aimar Haizzad. Built with passion.</p>
             <div class="footer-links">
-                <a href="mailto:haizzadaimar@gmail.com" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="tel:01151120112" aria-label="Phone">
-                    <i class="fas fa-phone"></i>
-                </a>
-                <a href="https://github.com" target="_blank" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
+                <a href="https://github.com/AimarHaizzad" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/aimarhaizzad" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:haizzadaimar@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
     </footer>
@@ -478,4 +424,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-

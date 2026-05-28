@@ -1,4 +1,4 @@
-// Mobile Navigation Toggle
+// Mobile navigation
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
@@ -8,7 +8,6 @@ hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
-// Close mobile menu when clicking on a link
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         hamburger.classList.remove('active');
@@ -16,239 +15,186 @@ navLinks.forEach(link => {
     });
 });
 
-// Navbar scroll effect
+// Navbar scroll
 const navbar = document.getElementById('navbar');
-let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-    
-    lastScroll = currentScroll;
-});
+    navbar.classList.toggle('scrolled', window.pageYOffset > 50);
+}, { passive: true });
 
-// Smooth scrolling for navigation links
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        
+        const target = document.querySelector(href);
         if (target) {
-            const offsetTop = target.offsetTop - 70;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
+            const offset = target.offsetTop - 70;
+            window.scrollTo({ top: offset, behavior: 'smooth' });
         }
     });
 });
 
-// Animate skill bars on scroll
-const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px'
-};
+// Cursor glow (desktop only)
+const cursorGlow = document.getElementById('cursorGlow');
 
-const observer = new IntersectionObserver((entries) => {
+if (cursorGlow && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.addEventListener('mousemove', (e) => {
+        cursorGlow.style.left = `${e.clientX}px`;
+        cursorGlow.style.top = `${e.clientY}px`;
+    }, { passive: true });
+}
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            const skillProgress = entry.target.querySelector('.skill-progress');
-            if (skillProgress) {
-                const width = skillProgress.style.width;
-                skillProgress.style.width = '0';
-                setTimeout(() => {
-                    skillProgress.style.width = width;
-                }, 100);
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Counter animation for stats
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseInt(el.dataset.count, 10);
+        if (isNaN(target)) return;
+
+        let current = 0;
+        const duration = 1200;
+        const step = target / (duration / 16);
+
+        const tick = () => {
+            current += step;
+            if (current >= target) {
+                el.textContent = target;
+            } else {
+                el.textContent = Math.floor(current);
+                requestAnimationFrame(tick);
             }
-            observer.unobserve(entry.target);
-        }
+        };
+        tick();
+        counterObserver.unobserve(el);
     });
-}, observerOptions);
+}, { threshold: 0.5 });
 
-// Observe all skill items
-document.querySelectorAll('.skill-item').forEach(item => {
-    observer.observe(item);
-});
+document.querySelectorAll('.stat-num[data-count]').forEach(el => counterObserver.observe(el));
 
-// Animate elements on scroll
-const animateOnScroll = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+// Typing effect for role
+const roles = [
+    'Software Engineering Student',
+    'Full-Stack Developer',
+    'Flutter Enthusiast',
+    'Problem Solver'
+];
+let roleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typedEl = document.getElementById('typedRole');
+
+function typeRole() {
+    if (!typedEl) return;
+    const current = roles[roleIndex];
+
+    if (!isDeleting) {
+        typedEl.textContent = current.substring(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === current.length) {
+            isDeleting = true;
+            setTimeout(typeRole, 2200);
+            return;
         }
-    });
-}, {
-    threshold: 0.1
-});
+        setTimeout(typeRole, 80);
+    } else {
+        typedEl.textContent = current.substring(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            setTimeout(typeRole, 400);
+            return;
+        }
+        setTimeout(typeRole, 40);
+    }
+}
 
-// Add animation to project cards
-document.querySelectorAll('.project-card').forEach((card, index) => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(30px)';
-    card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-    animateOnScroll.observe(card);
-});
+setTimeout(typeRole, 1200);
 
-// Add animation to other sections
-document.querySelectorAll('.internship-card, .education-card, .skill-category').forEach((element, index) => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(30px)';
-    element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-    animateOnScroll.observe(element);
-});
-
-// Contact form handling
-const contactForm = document.getElementById('contactForm');
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
-    
-    // Create mailto link
-    const mailtoLink = `mailto:haizzadaimar@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-    
-    // Open email client
-    window.location.href = mailtoLink;
-    
-    // Show success message
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitButton.innerHTML;
-    submitButton.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-    submitButton.style.background = 'var(--secondary-color)';
-    
-    // Reset form
-    contactForm.reset();
-    
-    // Reset button after 3 seconds
-    setTimeout(() => {
-        submitButton.innerHTML = originalText;
-        submitButton.style.background = '';
-    }, 3000);
-});
-
-// Resume download handler
-const downloadResume = document.getElementById('downloadResume');
-
-downloadResume.addEventListener('click', (e) => {
-    e.preventDefault();
-    
-    // Download the actual PDF resume
-    const a = document.createElement('a');
-    a.href = 'images/AIMAR%20HAIZZAD%20BIN%20NASREY.pdf';
-    a.download = 'AIMAR_HAIZZAD_BIN_NASREY_Resume.pdf';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    
-    // Show feedback
-    downloadResume.innerHTML = '<i class="fas fa-check"></i> Resume Downloaded!';
-    setTimeout(() => {
-        downloadResume.innerHTML = '<i class="fas fa-download"></i> Download Resume';
-    }, 2000);
-});
-
-// Active navigation link highlighting
+// Active nav link on scroll
 const sections = document.querySelectorAll('section[id]');
 
 window.addEventListener('scroll', () => {
     const scrollY = window.pageYOffset;
-    
     sections.forEach(section => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 100;
-        const sectionId = section.getAttribute('id');
-        
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${sectionId}`) {
-                    link.classList.add('active');
-                }
+        const top = section.offsetTop - 120;
+        const height = section.offsetHeight;
+        const id = section.getAttribute('id');
+        if (scrollY >= top && scrollY < top + height) {
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
             });
         }
     });
+}, { passive: true });
+
+// Contact form
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+
+    const mailto = `mailto:haizzadaimar@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+    window.location.href = mailto;
+
+    const btn = contactForm.querySelector('button[type="submit"]');
+    const original = btn.innerHTML;
+    btn.innerHTML = '<span>Opening email...</span><i class="fas fa-check"></i>';
+    contactForm.reset();
+
+    setTimeout(() => { btn.innerHTML = original; }, 2500);
 });
 
-// Typing effect for home section (optional enhancement)
-const typingEffect = () => {
-    const subtitle = document.querySelector('.home-subtitle');
-    if (!subtitle) return;
-    
-    const text = subtitle.textContent;
-    subtitle.textContent = '';
-    let i = 0;
-    
-    const type = () => {
-        if (i < text.length) {
-            subtitle.textContent += text.charAt(i);
-            i++;
-            setTimeout(type, 100);
-        }
-    };
-    
-    // Start typing effect after a delay
-    setTimeout(type, 1000);
-};
+// Resume download
+const downloadResume = document.getElementById('downloadResume');
 
-// Initialize typing effect when page loads
-window.addEventListener('load', () => {
-    // Optional: Uncomment to enable typing effect
-    // typingEffect();
+downloadResume.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const a = document.createElement('a');
+    a.href = 'images/AIMAR%20HAIZZAD%20BIN%20NASREY.pdf';
+    a.download = 'AIMAR_HAIZZAD_Resume.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    const span = downloadResume.querySelector('span');
+    const original = span.textContent;
+    span.textContent = 'Downloaded!';
+    setTimeout(() => { span.textContent = original; }, 2000);
 });
 
-// Add active class to nav links on click
-navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-        navLinks.forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
-    });
-});
-
-// Performance optimization: Lazy load images (if you add images later)
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                if (img.dataset.src) {
-                    img.src = img.dataset.src;
-                    img.removeAttribute('data-src');
-                    observer.unobserve(img);
-                }
-            }
+// Subtle tilt on project cards (desktop)
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            card.style.transform = `translateY(-6px) perspective(800px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
         });
     });
-    
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
-    });
 }
-
-// Add smooth reveal animation to sections
-const revealSections = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-        }
-    });
-}, {
-    threshold: 0.15
-});
-
-document.querySelectorAll('section').forEach(section => {
-    revealSections.observe(section);
-});
-
-console.log('Portfolio website loaded successfully!');
-
